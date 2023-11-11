@@ -1,6 +1,5 @@
 name: Bug Report
 description: Report something not behaving as expected
-title: "Bug: "
 labels: ["bug"]
 assignees:
   - franky47
