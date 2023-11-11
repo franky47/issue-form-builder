@@ -1,43 +1,52 @@
 name: Bug Report
-description: File a bug report
-title: "[Bug]: "
-labels: ["bug", "triage"]
-projects: ["octo-org/1", "octo-org/44"]
+description: Report something not behaving as expected
+title: "[BUG]: "
+labels: ["bug"]
 assignees:
-  - octocat
+  - franky47
 body:
   - type: markdown
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
-  - type: input
-    id: contact
-    attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
-    validations:
-      required: false
   - type: textarea
     id: what-happened
     attributes:
       label: What happened?
       description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
+      placeholder: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: input
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Not required, but strongly recommended for behavioural issues.
+      placeholder: URL to a CodeSandbox or a GitHub repo
+  - type: input
+    id: nuqs-version
+    attributes:
+      label: What version of `next-usequerystate` are you using?
+      description: Run `cat package.json | grep next-usequerystate` to find out.
+      placeholder: ex. 1.9.2
+    validations:
+      required: true
+  - type: textarea
+    id: next-version
+    attributes:
+      label: What version of Next.js are you using?
+      description: Run `next info` and paste the result here.
+      placeholder: Output from `next info`
     validations:
       required: true
   - type: dropdown
-    id: version
+    id: routers
     attributes:
-      label: Version
-      description: What version of our software are you running?
+      label: Where does the problem occur?
+      multiple: true
       options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
-      default: 0
-    validations:
-      required: true
+        - App router
+        - Pages router
   - type: dropdown
     id: browsers
     attributes:
@@ -48,17 +57,21 @@ body:
         - Chrome
         - Safari
         - Microsoft Edge
+  - type: dropdown
+    id: platforms
+    attributes:
+      label: What platforms are you seeing the problem on?
+      multiple: true
+      options:
+        - Linux
+        - macOS
+        - Windows
+        - Android
+        - iOS
   - type: textarea
     id: logs
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
-      options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
+      label: Relevant debug log output
+      description: Enable [debugging](https://github.com/47ng/next-usequerystate#debugging), then please copy and paste any relevant log output. No need for backticks.
+      render: Text
+
